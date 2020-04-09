@@ -93,4 +93,4 @@ public class GT4500 implements SpaceShip {
 
 }
 
-//This is a test for merge conflicts.
+//What merge conflict? There are no conflicts here!
