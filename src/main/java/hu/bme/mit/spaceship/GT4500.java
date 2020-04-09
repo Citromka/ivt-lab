@@ -93,3 +93,4 @@ public class GT4500 implements SpaceShip {
 
 }
 
+//What merge conflict? There are no conflicts here!
