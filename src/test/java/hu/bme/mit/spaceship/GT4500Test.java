@@ -145,4 +145,28 @@ public class GT4500Test {
         verify(mockSecondary, never()).fire(1);
     }
 
+    @Test
+    public void fireLaser_IsNotPossible() {
+
+        boolean single = ship.fireLaser(FiringMode.SINGLE);
+        boolean all = ship.fireLaser(FiringMode.ALL);
+
+        assertFalse(single);
+        assertFalse(all);
+    }
+
+    @Test
+    public void fireTorpedo_Single_WhenPrimaryEmpty() {
+        when(mockPrimary.isEmpty()).thenReturn(false, true);
+        when(mockSecondary.isEmpty()).thenReturn(true);
+        when(mockPrimary.fire(1)).thenReturn(true);
+
+        boolean first = ship.fireTorpedo(FiringMode.SINGLE);
+        boolean second = ship.fireTorpedo(FiringMode.SINGLE);
+
+        assertTrue(first);
+        assertFalse(second);
+        verify(mockPrimary, times(1)).fire(1);
+        verify(mockSecondary, never()).fire(1);
+    }
 }
